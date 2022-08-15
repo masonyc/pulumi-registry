@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/provider
+module github.com/masonyc/pulumi-registry-bridge/provider
 
 go 1.18
 
