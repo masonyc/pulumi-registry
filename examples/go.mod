@@ -1,3 +1,4 @@
-module github.com/pulumi/pulumi-registry/examples
+module github.com/masonyc/pulumi-registry-bridge/examples
+
 
 go 1.16

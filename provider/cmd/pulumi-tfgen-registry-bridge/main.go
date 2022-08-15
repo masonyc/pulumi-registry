@@ -15,12 +15,11 @@
 package main
 
 import (
+	registry "github.com/masonyc/terraform-provider-registry/registry"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
-	registry "github.com/pulumi/pulumi-registry/provider"
-	"github.com/pulumi/pulumi-registry/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("registry", version.Version, registry.Provider())
+	tfgen.Main("registry", "0.1", registry.Provider())
 }

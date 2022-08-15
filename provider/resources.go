@@ -18,12 +18,11 @@ import (
 	"fmt"
 	"path/filepath"
 
+	registry "github.com/masonyc/terraform-provider-registry/registry"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi-registry/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/terraform-providers/terraform-provider-registry/registry"
 )
 
 // all of the token components used below.
@@ -134,7 +133,7 @@ func Provider() tfbridge.ProviderInfo {
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
-				tfbridge.GetModuleMajorVersion(version.Version),
+				tfbridge.GetModuleMajorVersion("0.1"),
 				"go",
 				mainPkg,
 			),

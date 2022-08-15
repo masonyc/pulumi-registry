@@ -19,9 +19,8 @@ package main
 import (
 	_ "embed"
 
+	registry "github.com/masonyc/terraform-provider-registry/registry"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	registry "github.com/pulumi/pulumi-registry/provider"
-	"github.com/pulumi/pulumi-registry/provider/pkg/version"
 )
 
 //go:embed schema-embed.json
@@ -29,5 +28,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("registry", version.Version, registry.Provider(), pulumiSchema)
+	tfbridge.Main("registry", "0.1", registry.Provider(), pulumiSchema)
 }
