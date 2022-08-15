@@ -18,6 +18,7 @@ package main
 
 import (
 	_ "embed"
+	"github.com/masonyc/pulumi-registry-bridge/provider/pkg/version"
 
 	registry "github.com/masonyc/terraform-provider-registry/registry"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -28,5 +29,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("registry", "0.1", registry.Provider(), pulumiSchema)
+	tfbridge.Main("registry", version.Version, registry.Provider(), pulumiSchema)
 }
