@@ -15,7 +15,7 @@
 package main
 
 import (
-	registry "github.com/masonyc/terraform-provider-registry/registry"
+	"github.com/masonyc/terraform-provider-registry/registry"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 

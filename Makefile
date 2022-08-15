@@ -1,7 +1,7 @@
 PROJECT_NAME := registry Package
 
 SHELL            := /bin/bash
-PACK             := registry-bridge
+PACK             := registry
 ORG              := masonyc
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
 NODE_MODULE_NAME := @pulumi/${PACK}

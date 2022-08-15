@@ -5,7 +5,7 @@ before:
   hooks:
     - make tfgen
 builds:
-  - binary: pulumi-resource-registry-bridge
+  - binary: pulumi-resource-registry
     dir: provider
     env:
       - CGO_ENABLED=0
@@ -19,7 +19,7 @@ builds:
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
       - -X github.com/your-org-name/pulumi-registry/provider/pkg/version.Version={{.Tag }}
-    main: ./cmd/pulumi-resource-registry-bridge/
+    main: ./cmd/pulumi-resource-registry/
 changelog:
   skip: true
 release:
