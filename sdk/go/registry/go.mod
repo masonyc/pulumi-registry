@@ -1,4 +1,4 @@
-module github.com/masonyc/pulumi-registry-bridge/sdk
+module github.com/masonyc/pulumi-registry-bridge/sdk/go/registry
 
 go 1.17
 
