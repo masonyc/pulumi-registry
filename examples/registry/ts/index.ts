@@ -1,4 +1,5 @@
 import * as registry from "@pulumi/registry"
-
-var resource = new registry.RegistryResource("__example.resource.id_1",
-{name:"__example.resource.id_1"})
+//
+registry.getRegistryResource()
+// var resource = new registry.RegistryResource("",{name : ""})//"__example.resource.id_1",
+//{name:"__example.resource.id_1"})

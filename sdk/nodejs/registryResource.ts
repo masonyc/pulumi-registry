@@ -4,8 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-import {Name} from "./index";
-
 export class RegistryResource extends pulumi.CustomResource {
     /**
      * Get an existing RegistryResource resource's state with the given name, ID, and optional extra
@@ -34,7 +32,7 @@ export class RegistryResource extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegistryResource.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<Name>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a RegistryResource resource with the given unique name, arguments, and options.
@@ -66,12 +64,12 @@ export class RegistryResource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegistryResource resources.
  */
 export interface RegistryResourceState {
-    name?: pulumi.Input<Name>;
+    name?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a RegistryResource resource.
  */
 export interface RegistryResourceArgs {
-    name: pulumi.Input<Name>;
+    name: pulumi.Input<string>;
 }
