@@ -18,9 +18,9 @@ package main
 
 import (
 	_ "embed"
+	registry "github.com/masonyc/pulumi-registry-bridge/provider"
 	"github.com/masonyc/pulumi-registry-bridge/provider/pkg/version"
 
-	registry "github.com/masonyc/terraform-provider-registry/registry"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 

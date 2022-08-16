@@ -1,0 +1,160 @@
+{
+    "name": "registry",
+    "description": "A Pulumi package for creating and managing registry cloud resources.",
+    "keywords": [
+        "pulumi",
+        "registry",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`registry` Terraform Provider](https://github.com/masonyc/terraform-provider-registry).",
+    "repository": "https://github.com/masonyc/pulumi-registry-bridge",
+    "publisher": "Serko",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/masonyc/pulumi-registry/sdk/go/registry"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing registry cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/masonyc/terraform-provider-registry)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-registry` repo](https://github.com/masonyc/pulumi-registry-bridge/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-registry` repo](https://github.com/masonyc/terraform-provider-registry/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/masonyc/terraform-provider-registry)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-registry` repo](https://github.com/masonyc/pulumi-registry-bridge/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-registry` repo](https://github.com/masonyc/terraform-provider-registry/issues)."
+        }
+    },
+    "config": {
+        "variables": {
+            "azureClientId": {
+                "type": "string"
+            },
+            "azureClientSecret": {
+                "type": "string"
+            },
+            "azureTenantId": {
+                "type": "string"
+            },
+            "registryBaseUrl": {
+                "type": "string"
+            }
+        },
+        "defaults": [
+            "azureClientId",
+            "azureClientSecret",
+            "azureTenantId",
+            "registryBaseUrl"
+        ]
+    },
+    "provider": {
+        "description": "The provider type for the registry package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "azureClientId": {
+                "type": "string"
+            },
+            "azureClientSecret": {
+                "type": "string"
+            },
+            "azureTenantId": {
+                "type": "string"
+            },
+            "registryBaseUrl": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "azureClientId",
+            "azureClientSecret",
+            "azureTenantId",
+            "registryBaseUrl"
+        ],
+        "inputProperties": {
+            "azureClientId": {
+                "type": "string"
+            },
+            "azureClientSecret": {
+                "type": "string"
+            },
+            "azureTenantId": {
+                "type": "string"
+            },
+            "registryBaseUrl": {
+                "type": "string"
+            }
+        },
+        "requiredInputs": [
+            "azureClientId",
+            "azureClientSecret",
+            "azureTenantId",
+            "registryBaseUrl"
+        ]
+    },
+    "resources": {
+        "registry:index/registryResource:RegistryResource": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "$ref": "#/types/registry:index:Name"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "$ref": "#/types/registry:index:Name"
+                }
+            },
+            "requiredInputs": [
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RegistryResource resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "$ref": "#/types/registry:index:Name"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "registry:index/getRegistryResource:GetRegistryResource": {
+            "outputs": {
+                "description": "A collection of values returned by GetRegistryResource.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name"
+                ]
+            }
+        }
+    }
+}

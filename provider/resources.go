@@ -17,13 +17,13 @@ package registry
 import (
 	"fmt"
 	"github.com/masonyc/pulumi-registry-bridge/provider/pkg/version"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"path/filepath"
 
-	registry "github.com/masonyc/terraform-provider-registry/registry"
+	"github.com/masonyc/terraform-provider-registry/registry"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
 // all of the token components used below.
@@ -59,7 +59,7 @@ func Provider() tfbridge.ProviderInfo {
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Pulumi",
+		Publisher: "Serko",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -77,11 +77,11 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:   []string{"pulumi", "registry", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-registry",
+		Repository: "https://github.com/masonyc/pulumi-registry-bridge",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "",
-		Config: map[string]*tfbridge.SchemaInfo{
+		GitHubOrg: "masonyc",
+		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -93,6 +93,14 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
+			"registry_resources": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "RegistryResource"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id":   {Type: tfbridge.MakeType(mainPkg, mainMod, "Id")},
+					"name": {Type: tfbridge.MakeType(mainPkg, mainMod, "Name")},
+				},
+			},
+
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -107,6 +115,10 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
+
+			"registry_resources": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "GetRegistryResource"),
+			},
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
@@ -125,26 +137,26 @@ func Provider() tfbridge.ProviderInfo {
 			// no overlay files.
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
-		Python: &tfbridge.PythonInfo{
-			// List any Python dependencies and their version ranges
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
-		},
+		//Python: &tfbridge.PythonInfo{
+		//	// List any Python dependencies and their version ranges
+		//	Requires: map[string]string{
+		//		"pulumi": ">=3.0.0,<4.0.0",
+		//	},
+		//},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/masonyc/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
 		},
-		CSharp: &tfbridge.CSharpInfo{
-			PackageReferences: map[string]string{
-				"Pulumi": "3.*",
-			},
-		},
+		//CSharp: &tfbridge.CSharpInfo{
+		//	PackageReferences: map[string]string{
+		//		"Pulumi": "3.*",
+		//	},
+		//},
 	}
 
 	prov.SetAutonaming(255, "-")
