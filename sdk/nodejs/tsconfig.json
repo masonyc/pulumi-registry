@@ -15,10 +15,11 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
-        "getRegistryResource.ts",
         "index.ts",
         "provider.ts",
-        "registryResource.ts",
+        "terraform-provider-registry/getRegistryResource.ts",
+        "terraform-provider-registry/index.ts",
+        "terraform-provider-registry/registryResource.ts",
         "utilities.ts"
     ]
 }

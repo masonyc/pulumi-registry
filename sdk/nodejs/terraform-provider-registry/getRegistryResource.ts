@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as utilities from "./utilities";
+import * as utilities from "../utilities";
 
 export function getRegistryResource(opts?: pulumi.InvokeOptions): Promise<GetRegistryResourceResult> {
     if (!opts) {
@@ -10,7 +10,7 @@ export function getRegistryResource(opts?: pulumi.InvokeOptions): Promise<GetReg
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("registry:index/getRegistryResource:GetRegistryResource", {
+    return pulumi.runtime.invoke("registry:terraform-provider-registry/getRegistryResource:GetRegistryResource", {
     }, opts);
 }
 

@@ -5,32 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./getRegistryResource";
 export * from "./provider";
-export * from "./registryResource";
 
 // Export sub-modules:
 import * as config from "./config";
+import * as terraformRegistry from "./terraform-provider-registry";
 
 export {
     config,
+    terraformRegistry,
 };
-
-// Import resources to register:
-import { RegistryResource } from "./registryResource";
-
-const _module = {
-    version: utilities.getVersion(),
-    construct: (name: string, type: string, urn: string): pulumi.Resource => {
-        switch (type) {
-            case "registry:index/registryResource:RegistryResource":
-                return new RegistryResource(name, <any>undefined, { urn })
-            default:
-                throw new Error(`unknown resource type ${type}`);
-        }
-    },
-};
-pulumi.runtime.registerResourceModule("registry", "index/registryResource", _module)
 
 import { Provider } from "./provider";
 

@@ -106,7 +106,7 @@
         ]
     },
     "resources": {
-        "registry:index/registryResource:RegistryResource": {
+        "registry:terraform-provider-registry/registryResource:RegistryResource": {
             "properties": {
                 "name": {
                     "type": "string"
@@ -132,7 +132,7 @@
         }
     },
     "functions": {
-        "registry:index/getRegistryResource:GetRegistryResource": {
+        "registry:terraform-provider-registry/getRegistryResource:GetRegistryResource": {
             "outputs": {
                 "description": "A collection of values returned by GetRegistryResource.\n",
                 "properties": {

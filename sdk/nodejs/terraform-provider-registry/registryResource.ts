@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as utilities from "./utilities";
+import * as utilities from "../utilities";
 
 export class RegistryResource extends pulumi.CustomResource {
     /**
@@ -19,7 +19,7 @@ export class RegistryResource extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'registry:index/registryResource:RegistryResource';
+    public static readonly __pulumiType = 'registry:terraform-provider-registry/registryResource:RegistryResource';
 
     /**
      * Returns true if the given object is an instance of RegistryResource.  This is designed to work even
