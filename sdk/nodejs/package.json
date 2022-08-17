@@ -1,5 +1,6 @@
 {
     "name": "@pulumi/registry",
+    "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing registry cloud resources.",
     "keywords": [
         "pulumi",
@@ -10,7 +11,8 @@
     "repository": "https://github.com/masonyc/pulumi-registry-bridge",
     "license": "Apache-2.0",
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "install": "node scripts/install-pulumi-plugin.js resource registry ${VERSION}"
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.0.0"

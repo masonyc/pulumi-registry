@@ -1,3 +1,5 @@
 name: poc_registry_go
 runtime: go
 description: A minimal Go Pulumi program
+options:
+    binary: /Users/mason/repos/pulumi-registry/examples/registry/debug_go.sh

@@ -109,8 +109,7 @@
         "registry:index/registryResource:RegistryResource": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "$ref": "#/types/registry:index:Name"
+                    "type": "string"
                 }
             },
             "required": [
@@ -118,19 +117,14 @@
             ],
             "inputProperties": {
                 "name": {
-                    "type": "string",
-                    "$ref": "#/types/registry:index:Name"
+                    "type": "string"
                 }
             },
-            "requiredInputs": [
-                "name"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering RegistryResource resources.\n",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "$ref": "#/types/registry:index:Name"
+                        "type": "string"
                     }
                 },
                 "type": "object"

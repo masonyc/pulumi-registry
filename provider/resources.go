@@ -81,7 +81,7 @@ func Provider() tfbridge.ProviderInfo {
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "masonyc",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -95,10 +95,6 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"registry_resources": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "RegistryResource"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id":   {Type: tfbridge.MakeType(mainPkg, mainMod, "Id")},
-					"name": {Type: tfbridge.MakeType(mainPkg, mainMod, "Name")},
-				},
 			},
 
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples

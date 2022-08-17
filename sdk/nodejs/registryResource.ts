@@ -41,7 +41,7 @@ export class RegistryResource extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RegistryResourceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: RegistryResourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryResourceArgs | RegistryResourceState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -50,9 +50,6 @@ export class RegistryResource extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as RegistryResourceArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             resourceInputs["name"] = args ? args.name : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -71,5 +68,5 @@ export interface RegistryResourceState {
  * The set of arguments for constructing a RegistryResource resource.
  */
 export interface RegistryResourceArgs {
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
