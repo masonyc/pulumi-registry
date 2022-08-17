@@ -32,7 +32,7 @@ const (
 	// registries for nodejs and python:
 	mainPkg = "registry"
 	// modules:
-	mainMod = "terraform-provider-registry" // the registry module
+	mainMod = "index" // the registry module
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.

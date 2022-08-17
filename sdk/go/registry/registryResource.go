@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +20,9 @@ type RegistryResource struct {
 func NewRegistryResource(ctx *pulumi.Context,
 	name string, args *RegistryResourceArgs, opts ...pulumi.ResourceOption) (*RegistryResource, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RegistryResourceArgs{}
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	var resource RegistryResource
 	err := ctx.RegisterResource("registry:index/registryResource:RegistryResource", name, args, &resource, opts...)
 	if err != nil {
@@ -61,12 +57,12 @@ func (RegistryResourceState) ElementType() reflect.Type {
 }
 
 type registryResourceArgs struct {
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a RegistryResource resource.
 type RegistryResourceArgs struct {
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 }
 
 func (RegistryResourceArgs) ElementType() reflect.Type {

@@ -7,6 +7,7 @@ go 1.17
 //)
 
 require (
+	github.com/masonyc/pulumi-registry-bridge/sdk/go/registry v0.0.0-20220817024319-6c13231df34c
 	github.com/pulumi/pulumi/sdk/v3 v3.37.2
 )
 
